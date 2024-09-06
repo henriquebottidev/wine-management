@@ -1,7 +1,6 @@
 
 #Variavel gobal para armazenar vinhos
 wines = []
-
 # Exibir o menu principal
 def menu():
     print(" =========================================================")
