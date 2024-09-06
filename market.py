@@ -1,6 +1,7 @@
 
 #Variavel gobal para armazenar vinhos
 wines = []
+
 # Exibir o menu principal
 def menu():
     print(" =========================================================")
@@ -44,6 +45,28 @@ def removeWine():
 
 # Função para encontrar vinhos
 def findWine():
+    global wines
+
+    key = input('Encontre um vinho pelo Nome, Ano, Região ou Uva: ')
+
+    found = False
+
+    for wine in wines:
+        if(key in wine['Nome'] or
+           key in wine['Ano'] or 
+           key in wine['Região'] or 
+           key in wine['Uva']):
+            print(' ========= Encontrado =========')
+            print(f"Vinho: {wine["Vinho"]}")
+            print(f"Ano: {wine["Ano"]}")
+            print(f"Região: {wine["Região"]}")
+            print(f"Uva: {wine["Uva"]}")
+            print('------')
+            found = True 
+        
+        if not found:
+            print("Nenhum Vinho Encontrado") 
+
 
 # Função para adicionar distribuidores de vinho
 def addDistribuitors():
