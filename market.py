@@ -42,6 +42,25 @@ def addWine():
 
 # Função para remover vinhos
 def removeWine():
+    global wines
+
+    print(wines)
+    key = input('Remova um vinho pelo Nome: ')
+
+    removed = False 
+
+    for wine in wines:
+        if(key in wine['Nome']):
+            wines.remove(wine)
+            print(" ============================")
+            print(f"{wine['Nome']} Foi Removido!")
+            print(" ============================")
+            removed = True 
+            break
+
+        if not removed:
+            print('No wine to be removed.')
+
 
 # Função para encontrar vinhos
 def findWine():
