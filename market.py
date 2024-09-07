@@ -1,5 +1,4 @@
-
-#Variaveis gobais para armazenar vinhos e distribuidores
+# Função para adicionar vinhos
 wines = []
 dist_list = []
 
@@ -27,21 +26,45 @@ def addWine():
             active = False 
             break
 
-        ano = int(input('Digite o ano do vinho: '))
+        ano = input('Digite o ano do vinho: ')
         regiao = input('Digite a região do vinho: ')
         uva = input('Digite o nome da uva: ')
 
-        wine_entry['Nome: '] = nome.title()
-        wine_entry['Ano: '] = ano 
-        wine_entry['Região: '] = regiao.title()
-        wine_entry['Uva: '] = uva.title()
+        wine_entry['Nome'] = nome.title()
+        wine_entry['Ano'] = ano 
+        wine_entry['Região'] = regiao.title()
+        wine_entry['Uva'] = uva.title()
 
         wines.append(wine_entry)
         print(wines)
     
     return wines
 
-# Função para remover vinhos
+def findWine():
+    global wines
+
+    found = False
+
+    print("Para voltar digite 'voltar' ---- Para cadastrar vinhos é só digitar")
+
+    key = input('Encontre um vinho pelo Nome, Ano, Região ou Uva: ')
+
+    for wine in wines:
+        if(key in wine['Nome'] or
+           key in wine['Ano'] or 
+           key in wine['Região'] or 
+           key in wine['Uva']):
+            print(' ========= Encontrado =========')
+            print(f"Vinho: {wine["Nome"]}")
+            print(f"Ano: {wine["Ano"]}")
+            print(f"Região: {wine["Região"]}")
+            print(f"Uva: {wine["Uva"]}")
+            print('------')
+            found = True 
+        
+        if not found:
+            print("Nenhum Vinho Encontrado") 
+
 def removeWine():
     global wines
 
@@ -62,59 +85,6 @@ def removeWine():
         if not removed:
             print('No wine to be removed.')
 
-
-# Função para encontrar vinhos
-def findWine():
-    global wines
-
-    key = input('Encontre um vinho pelo Nome, Ano, Região ou Uva: ')
-
-    found = False
-
-    for wine in wines:
-        if(key in wine['Nome'] or
-           key in wine['Ano'] or 
-           key in wine['Região'] or 
-           key in wine['Uva']):
-            print(' ========= Encontrado =========')
-            print(f"Vinho: {wine["Vinho"]}")
-            print(f"Ano: {wine["Ano"]}")
-            print(f"Região: {wine["Região"]}")
-            print(f"Uva: {wine["Uva"]}")
-            print('------')
-            found = True 
-        
-        if not found:
-            print("Nenhum Vinho Encontrado") 
-
-
-# Função para adicionar distribuidores de vinho
-def addDistribuitors():
-    global dist_list 
-    dist = {}
-
-    print
-
-    dist_name = input("Digite 'voltar' para ir ao menu -----\nOu continue digitando o nome do distribuidor\n: ")
-
-    if dist_name.lower() == 'voltar':
-        return
-
-    dist_cpf = input('Digite o cpf do fornecedor: ')
-    dist_tel = input('Digite o telefone do fornecedor: ')
-
-    dist['Nome'] = dist_name.title()
-    dist['Cpf'] = dist_cpf
-    dist['Tel'] = dist_tel
-
-    dist_list.append(dist)
-    print(dist_list)
-
-def findDistribuitors():
-    global dist_list
-    print(dist_list)
-
-# Função para recomendação de vinhos 
 def wineRecommendations():
 
     global wines
@@ -152,6 +122,34 @@ def wineRecommendations():
     if not found:
         print("There is no wine recommendations")
 
+def addDistribuitors():
+    global dist_list 
+    dist = {}
+
+    print
+
+    dist_name = input("Digite 'voltar' para ir ao menu -----\nOu continue digitando o nome do distribuidor\n: ")
+
+    if dist_name.lower() == 'voltar':
+        return
+
+    # nome, cpf , telefone
+
+    dist_cpf = input('Digite o cpf do fornecedor: ')
+    dist_tel = input('Digite o telefone do fornecedor: ')
+
+    dist['Nome'] = dist_name.title()
+    dist['Cpf'] = dist_cpf
+    dist['Tel'] = dist_tel
+
+    dist_list.append(dist)
+    print(dist_list)
+
+def findDistribuitors():
+    global dist_list
+    print(dist_list)
+
+
 # Função principal que controla o sistema
 def main():
     online = True
@@ -172,7 +170,7 @@ def main():
 
             case '4': 
                 addDistribuitors()
-            
+
             case '5':
                 findDistribuitors()
 
