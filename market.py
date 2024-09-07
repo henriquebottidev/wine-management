@@ -92,29 +92,32 @@ def addDistribuitors():
 
 # Função para recomendação de vinhos 
 def wineRecommendations():
+
+    global wines
+
     wine_recommendations = [
     {
         'Evento': 'Jantar de família',
         'Comida': 'Carne com massa',
-        'Recomendação de Vinho': 'Cabernet Sauvignon'
+        'Recomendação de Vinho': wines[0]
     },
     {
         'Evento': 'Jantar romântico',
-        'Comida': 'Massas com molho branco',
-        'Recomendação de Vinho': 'Sauvignon Blanc'
+        'Comida': 'Massa com molho branco',
+        'Recomendação de Vinho': wines[0]
     },
     {
         'Evento': 'Jantar de negócios',
         'Comida': 'Filé mignon ao molho de pimenta',
-        'Recomendação de Vinho': 'Merlot'
+        'Recomendação de Vinho': wines[0]
     },
     ]
 
     found = False 
 
     print(" =========== BEM VINDO: Recomendações de Vinho =================")
-    user_event = input("==== Qual é a ocasião? ")
-    user_food = input("==== Qual é o estilo gastrônomico? ")
+    user_event = input("==== Qual é a ocasião?: ")
+    user_food = input("==== Qual é o estilo gastrônomico?: ")
 
     for recommendations in wine_recommendations:
         if(user_event in recommendations['Evento'] or
