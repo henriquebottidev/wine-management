@@ -1,13 +1,14 @@
 
-#Variavel gobal para armazenar vinhos
+#Variaveis gobais para armazenar vinhos e distribuidores
 wines = []
+dist_list = []
 
 # Exibir o menu principal
 def menu():
     print(" =========================================================")
     print(" ****** Bem Vindo Ao Sistema De Vinhos Winy **************")
     print(" =========================================================")
-    print("Escolha uma opção:\n [1]- Adicionar Vinhos\n [2]- Remover Vinhos\n [3]- Consultar Vinhos\n [4]- Adicionar distribuidores\n [5]- Recomendações de vinho\n [6]- Sair")
+    print("Escolha uma opção:\n [1]- Adicionar Vinhos\n [2]- Remover Vinhos\n [3]- Consultar Vinhos\n [4]- Adicionar distribuidores\n [5]- Consultar Distribuidores\n [6]- Recomendações de vinho\n [7]- Sair")
 
 # Função para adicionar vinhos
 def addWine():
@@ -89,6 +90,29 @@ def findWine():
 
 # Função para adicionar distribuidores de vinho
 def addDistribuitors():
+    global dist_list 
+    dist = {}
+
+    print
+
+    dist_name = input("Digite 'voltar' para ir ao menu -----\nOu continue digitando o nome do distribuidor\n: ")
+
+    if dist_name.lower() == 'voltar':
+        return
+
+    dist_cpf = input('Digite o cpf do fornecedor: ')
+    dist_tel = input('Digite o telefone do fornecedor: ')
+
+    dist['Nome'] = dist_name.title()
+    dist['Cpf'] = dist_cpf
+    dist['Tel'] = dist_tel
+
+    dist_list.append(dist)
+    print(dist_list)
+
+def findDistribuitors():
+    global dist_list
+    print(dist_list)
 
 # Função para recomendação de vinhos 
 def wineRecommendations():
@@ -148,11 +172,14 @@ def main():
 
             case '4': 
                 addDistribuitors()
-
+            
             case '5':
+                findDistribuitors()
+
+            case '6':
                 wineRecommendations()
             
-            case '6': 
+            case '7': 
                 print('Saindo do Sistema!')
                 online = False
             
