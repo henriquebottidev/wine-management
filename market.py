@@ -92,6 +92,38 @@ def addDistribuitors():
 
 # Função para recomendação de vinhos 
 def wineRecommendations():
+    wine_recommendations = [
+    {
+        'Evento': 'Jantar de família',
+        'Comida': 'Carne com massa',
+        'Recomendação de Vinho': 'Cabernet Sauvignon'
+    },
+    {
+        'Evento': 'Jantar romântico',
+        'Comida': 'Massas com molho branco',
+        'Recomendação de Vinho': 'Sauvignon Blanc'
+    },
+    {
+        'Evento': 'Jantar de negócios',
+        'Comida': 'Filé mignon ao molho de pimenta',
+        'Recomendação de Vinho': 'Merlot'
+    },
+    ]
+
+    found = False 
+
+    print(" =========== BEM VINDO: Recomendações de Vinho =================")
+    user_event = input("==== Qual é a ocasião? ")
+    user_food = input("==== Qual é o estilo gastrônomico? ")
+
+    for recommendations in wine_recommendations:
+        if(user_event in recommendations['Evento'] or
+           user_food in recommendations['Comida']):
+            print(f"\nMelhor Vinho: {recommendations['Recomendação de Vinho']}")
+            found = True 
+        
+    if not found:
+        print("There is no wine recommendations")
 
 # Função principal que controla o sistema
 def main():
